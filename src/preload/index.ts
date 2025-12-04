@@ -1,8 +1,27 @@
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 
 // Custom APIs for renderer
-const api = {}
+const api = {
+  getRegisterStatic: () => {
+    return ipcRenderer.invoke('get-register-static')
+  },
+  testFaceDetect: (data) => {
+    return ipcRenderer.invoke('test-face-detect', data)
+  },
+  registerFace: (data) => {
+    return ipcRenderer.invoke('register-face', data)
+  },
+  getTestList: (data) => {
+    return ipcRenderer.invoke('get-test-list', data)
+  },
+  get30DaysData: () => {
+    return ipcRenderer.invoke('get-30-days-data')
+  },
+  getCallStatic: (data) => {
+    return ipcRenderer.invoke('get-call-static', data)
+  }
+}
 
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise

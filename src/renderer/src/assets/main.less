@@ -1,0 +1,118 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0; 
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.card {
+  padding: 2em;
+}
+
+#app {
+  max-width: 1920px; 
+  width: 100%;
+  height: 100vh; 
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.ant-table-header {
+  overflow-y: overlay !important;
+}
+
+.ant-table-body{
+  border-right: #2f2f2f;
+  overflow-y: overlay !important;
+
+  //滚动条整体部分
+  &::-webkit-scrollbar {
+    width: 12px; //y轴滚动条粗细
+    height: 12px; //x轴滚动条粗细
+  }
+
+  //滚动条里面的小方块，能上下左右移动（取决于是垂直滚动条还是水平滚动条）
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+    // background: #f5f7fa;
+    margin-bottom: 10px;
+  }
+
+  //滚动条的轨道（里面装有thumb）滚动槽
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: 0;
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 10px; //滚动条边框半径设置
+  }
+}
+
+.error{
+  color: #ff4d4f;
+}
+
+.ant-image-preview-wrap{
+  left: 10vw;
+  right: 10vw;
+  top: 10vh;
+  bottom: 10vh;
+}

@@ -2,12 +2,13 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
-
+import { getRegisterStatic, testFaceDetect, registerFace } from './events/debug'
+import { getTestList, get30DaysData, getCallStatic } from './events/statistics'
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    width: 1200,
+    height: 800,
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
@@ -33,6 +34,10 @@ function createWindow(): void {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+
+  mainWindow.on('resized', () => {
+    mainWindow.webContents.send('window-resized')
+  })
 }
 
 // This method will be called when Electron has finished
@@ -48,9 +53,6 @@ app.whenReady().then(() => {
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window)
   })
-
-  // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
 
   createWindow()
 
@@ -69,6 +71,19 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+ipcMain.handle('get-register-static', () => getRegisterStatic())
+ipcMain.handle('test-face-detect', (_, data) => testFaceDetect(data))
+ipcMain.handle('register-face', async (_, data) => {
+  try {
+    return await registerFace(data)
+  } catch (error) {
+    return error
+  }
+})
+ipcMain.handle('get-test-list', (_, data) => getTestList(data))
+ipcMain.handle('get-30-days-data', () => get30DaysData())
+ipcMain.handle('get-call-static', (_, data) => getCallStatic(data))
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

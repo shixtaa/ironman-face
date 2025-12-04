@@ -1,0 +1,98 @@
+.statistics{
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  .all-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .header{
+    height: 40px;
+    justify-content: space-between;
+    .title{
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+  .filter{
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .sub-title{
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
+  .status-container{
+    display: flex;
+    font-size: 16px;
+    .invoke{
+      flex:1;
+      .s-box{
+        height: 80px;
+        border: 1px solid #d9d9d9;
+        padding: 12px;
+        text-align: center;
+      } 
+      .arrow{ 
+        height: 80px;
+        img{ 
+          width: 100%;
+          height: 50px;
+        }
+      } 
+      .bd{
+        margin-top: 20px;
+      }
+      .arrow-box{
+        display: flex;
+        align-items: center;
+        height: 80px;
+        width: 100%;
+        padding-right: 10px;
+        .bar{
+          height: 24px;
+          flex:1;
+          background-color: #cdcdcd;
+        }
+        .triangle{
+          width: 0;
+          height: 0;
+          border: 18px solid;
+          border-color: #cdcdcd #cdcdcd transparent transparent;
+          transform: rotate(45deg);
+          margin-left: -20px;
+        } 
+      }
+    } 
+    .compare{ 
+      margin-left: 10px;
+      .box{
+        width: 230px;
+        height: 230px;
+        border: 1px solid #d9d9d9;
+        padding: 12px;
+      }
+    }
+  }
+  .chart-container{
+    margin-top: 20px;
+    .chart{
+      width: 100%;
+      height: 300px;
+    }
+  }
+  .table-container{
+    margin:20px 0;
+    min-height: 400px;
+    .page-control{ 
+      padding: 8px;
+      height: 48px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

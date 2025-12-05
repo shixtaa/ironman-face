@@ -396,7 +396,7 @@ const drawLineChart = async () => {
   } catch (error) {
     alert(error);
   }
-  unlisten = window.electron.ipcRenderer.on('window-resized', () => {
+  unlisten = window.electron.ipcRenderer.on('window-event', (type) => {
     if (!!myChart) myChart.resize()
   });
 };

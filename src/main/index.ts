@@ -36,7 +36,13 @@ function createWindow(): void {
   }
 
   mainWindow.on('resized', () => {
-    mainWindow.webContents.send('window-resized')
+    mainWindow.webContents.send('window-event', 'resized')
+  })
+  mainWindow.on('maximize', () => {
+    mainWindow.webContents.send('window-event', 'maximize')
+  })
+  mainWindow.on('unmaximize', () => {
+    mainWindow.webContents.send('window-event', 'unmaximize')
   })
 }
 

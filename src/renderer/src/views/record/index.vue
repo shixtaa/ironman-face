@@ -80,7 +80,6 @@ const tableLoading = ref<boolean>(false);
 const tableData = ref<any[]>([{}]);
 // 切换页码
 const pageChange = (index: number) => {
-  console.log(index);
   pagination.value.pageIndex = index;
   queryPageList();
 };
@@ -96,8 +95,6 @@ const queryPageList = async () => {
       pageSize: pagination.value.pageSize,
     }
     let res = await window.api.queryFacePageList(params);
-    console.log(res);
-
     tableData.value = res.data;
     pagination.value.total = res.totalCount;
     if (res.data.length < 1 && pagination.value.pageIndex > 1) {

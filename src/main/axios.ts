@@ -2,8 +2,6 @@ import axios from 'axios'
 
 const baseURL =
   process.env.NODE_ENV === 'production' ? 'http://117.83.111.19:10048' : 'http://192.168.19.23:9094' //接口请求地址
-console.log(process.env.NODE_ENV, baseURL)
-
 const service = axios.create({
   baseURL,
   headers: {

@@ -2,40 +2,31 @@
   <a-config-provider :locale="zhCN">
     <div class="main-container">
       <div class="menu">
-        <img class="menu-logo" src="./assets/logo.png"></img>
+        <img class="menu-logo" src="./assets/logo.png" />
         <div class="menu-item" :class="{ 'active': active == 1 }" @click="changeTab(1)">
           <ReconciliationOutlined />
-          <span>调试</span>
-        </div>
-        <div class="menu-item" :class="{ 'active': active == 2 }" @click="changeTab(2)">
-          <LineChartOutlined />
-          <span>统计</span>
+          <span>记录</span>
         </div>
       </div>
       <div class="content">
-        <DebugView v-if="active == 1" />
-        <StatisticsView v-else-if="active == 2" />
+        <RecordView v-if="active == 1" />
       </div>
     </div>
   </a-config-provider>
 </template>
 <script lang="ts" setup>
+import { ref } from 'vue';
+import { ReconciliationOutlined } from '@ant-design/icons-vue';
+import RecordView from './views/record/index.vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
-import { onMounted, ref } from 'vue';
-import { ReconciliationOutlined, LineChartOutlined } from '@ant-design/icons-vue';
-import DebugView from './views/debug/index.vue';
-import StatisticsView from './views/statistics/index.vue';
 dayjs.locale('zhCN');
 
 const active = ref<number>(1);
 const changeTab = (val: number) => {
   active.value = val;
-}
-onMounted(() => {
-
-})
+} 
 </script>
 <style scoped>
 .main-container {

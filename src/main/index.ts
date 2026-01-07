@@ -2,8 +2,8 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
-import { getRegisterStatic, testFaceDetect, registerFace } from './events/debug'
-import { getTestList, get30DaysData, getCallStatic } from './events/statistics'
+import { queryFacePageList, getDict } from './events/record'
+
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -77,19 +77,9 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
-
-ipcMain.handle('get-register-static', () => getRegisterStatic())
-ipcMain.handle('test-face-detect', (_, data) => testFaceDetect(data))
-ipcMain.handle('register-face', async (_, data) => {
-  try {
-    return await registerFace(data)
-  } catch (error) {
-    return error
-  }
-})
-ipcMain.handle('get-test-list', (_, data) => getTestList(data))
-ipcMain.handle('get-30-days-data', () => get30DaysData())
-ipcMain.handle('get-call-static', (_, data) => getCallStatic(data))
+// 接口请求
+ipcMain.handle('query-face-page-list', (_, data) => queryFacePageList(data))
+ipcMain.handle('get-dict', (_, key) => getDict(key))
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

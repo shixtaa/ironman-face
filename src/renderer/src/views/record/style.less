@@ -1,0 +1,56 @@
+.record-page{
+  height: 100%;
+  padding: 20px;
+  overflow:hidden; 
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  .title{
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .filter{
+    margin: 20px 0; 
+    :deep(.ant-select),
+    :deep(.ant-picker){
+      width: 100%;
+    }
+  } 
+  .table-container{
+    flex: 1; 
+    .table{
+      height: calc(100% - 52px);
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-template-rows: repeat(2,max-content);
+      grid-gap:12px;
+      line-height: 24px;
+      .card-item{
+        border: 1px solid #eee;
+        border-radius: 2px;
+        padding: 12px; 
+        img{
+          width: 100%; 
+          aspect-ratio: 16/9; //固定宽高比 
+          cursor: pointer;
+        }
+        
+        .font-bold{
+          font-size: 16px;
+          font-weight: 700;
+          margin: 6px 0;
+        }
+      }
+    }
+    .pagination{
+      height: 32px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
+}

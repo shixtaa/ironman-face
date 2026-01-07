@@ -3,23 +3,11 @@ import { electronAPI } from '@electron-toolkit/preload'
 
 // Custom APIs for renderer
 const api = {
-  getRegisterStatic: () => {
-    return ipcRenderer.invoke('get-register-static')
+  queryFacePageList: (data) => {
+    return ipcRenderer.invoke('query-face-page-list', data)
   },
-  testFaceDetect: (data) => {
-    return ipcRenderer.invoke('test-face-detect', data)
-  },
-  registerFace: (data) => {
-    return ipcRenderer.invoke('register-face', data)
-  },
-  getTestList: (data) => {
-    return ipcRenderer.invoke('get-test-list', data)
-  },
-  get30DaysData: () => {
-    return ipcRenderer.invoke('get-30-days-data')
-  },
-  getCallStatic: (data) => {
-    return ipcRenderer.invoke('get-call-static', data)
+  getDict: (data) => {
+    return ipcRenderer.invoke('get-dict', data)
   }
 }
 
